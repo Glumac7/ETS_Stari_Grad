@@ -4,11 +4,7 @@ int main()
 {
 	User prof;
 
-	
+	prof.print_log_in();
 
-	prof.professor_or_student();
-
-
-
-	std::cin.get();
+	system("pause");
 }

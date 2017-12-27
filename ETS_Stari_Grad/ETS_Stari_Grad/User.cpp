@@ -6,10 +6,12 @@ void User::print_log_in()
 	if (!m_Logged_in)
 	{
 		std::cout << "User: ";
-		std::cin >> m_User_id;
+		std::cin >> m_Entered_user_id;
 
 		std::cout << "Password: ";
-		std::cin >> m_User_password;
+		std::cin >> m_Entered_user_password;
+
+		professor_or_student();
 	}
 }
 
@@ -17,23 +19,30 @@ void User::professor_or_student()
 {
 	std::ifstream myfile;
 
-	myfile.open("Professor- Username and password.txt");
+	myfile.open("Professor- Username and password.txt");//Opens the file...
 
 	std::string s, s1;
 
-	std::vector<std::string> myfiles, myfiles2;
-	while (!myfile.eof())
+	
+	while (!myfile.eof()) //While there is still text in the file...
 	{
-		myfile >> s;
-		myfiles.push_back(s);
-		myfile >> s1;
-		myfiles2.push_back(s1);
-	}
-			
+		myfile >> s;//Puts the username in a local string s...
+		m_File_user_name.push_back(s);//Then pushes it to user_name which is a vector
 
-	std::cout << myfiles.at(0) << "." << myfiles2.at(0) << "_" << myfiles.at(1);
+		myfile >> s1;//Puts the password in a local string s1
+		m_File_password.push_back(s1);//Then pushes it to password which is a vector
+	}
+	
+	for (int i = 0; i <= m_Entered_user_id.size(); i++)
+	{
+		if (m_Entered_user_id == m_File_user_name.at(i))
+			if (m_Entered_user_password == m_File_password.at(i))
+			{
+				std::cout << "Pleas wait for the file to open...\n";
+				system("START FILOZOFIJA.docx");
+			}
+	}
 		
 	
 	myfile.close();
-	char first;
 }
