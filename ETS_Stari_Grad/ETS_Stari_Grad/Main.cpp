@@ -6,5 +6,5 @@ int main()
 
 	prof.print_log_in();
 
-	system("pause");
+	Sleep(10000);
 }
